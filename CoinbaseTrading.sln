@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FawkesTrader", "FawkesTrader\FawkesTrader.csproj", "{3D0B7CCE-B6AB-4DFA-A94D-AC40ABE6BAE0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alfred", "Alfred\Alfred.csproj", "{3AE7512B-9307-43DC-A42A-9BF8F232CCB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NateBot", "NateBot\NateBot.csproj", "{70798E9A-6F9D-4D76-81BE-94EBDF4D3472}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D0B7CCE-B6AB-4DFA-A94D-AC40ABE6BAE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D0B7CCE-B6AB-4DFA-A94D-AC40ABE6BAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D0B7CCE-B6AB-4DFA-A94D-AC40ABE6BAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D0B7CCE-B6AB-4DFA-A94D-AC40ABE6BAE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AE7512B-9307-43DC-A42A-9BF8F232CCB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AE7512B-9307-43DC-A42A-9BF8F232CCB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AE7512B-9307-43DC-A42A-9BF8F232CCB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AE7512B-9307-43DC-A42A-9BF8F232CCB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70798E9A-6F9D-4D76-81BE-94EBDF4D3472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70798E9A-6F9D-4D76-81BE-94EBDF4D3472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70798E9A-6F9D-4D76-81BE-94EBDF4D3472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70798E9A-6F9D-4D76-81BE-94EBDF4D3472}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8C7C52ED-C9A7-401A-A4E9-542ED9AE1CE8}
+	EndGlobalSection
+EndGlobal

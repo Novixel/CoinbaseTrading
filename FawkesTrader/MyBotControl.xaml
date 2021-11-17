@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="FawkesTrader.MyBotControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FawkesTrader" 
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+ 
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/> 
+    </UserControl.Resources>
+    
+    <Grid Grid.Row="6" Grid.Column="1" Margin="3" Background="#262524">
+        
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <TextBlock      Foreground="GhostWhite" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" FontWeight="Bold" Text="{Binding Path=ProductText, Mode=TwoWay}"  HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <TextBlock      Foreground="GhostWhite" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" FontWeight="Bold" Text="{Binding Path=ProductPrice, Mode=TwoWay}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <RadioButton    x:Name="activeStatus" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Red" Focusable="False" IsTabStop="False" IsHitTestVisible="False" Margin="10" />
+        <TextBlock      x:Name="CycleTxt" Grid.Row="0" Grid.Column="0" Text="{Binding Path=CyclesLimit, Mode=TwoWay}" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+
+        <TextBlock x:Name="AutoLabel" Foreground="GhostWhite" Grid.Row="3" Grid.Column="5" Text="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <CheckBox x:Name="AutoToggle" Grid.Row="3" Grid.Column="5" IsChecked="{Binding Path=AutoSwitch, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10"/>
+        <TextBox x:Name="TargetProfitBox" KeyDown="Box_KeyDown" Visibility="{Binding IsChecked, ElementName=AutoToggle, Converter={StaticResource BooleanToVisibilityConverter}}" Background="#FF323232" Foreground="GhostWhite" Grid.Row="3" Grid.Column="5" Text="{Binding Path=TargetProfit, Mode=TwoWay}" VerticalAlignment="Bottom">
+            <b:Interaction.Behaviors>
+                <local:TextBoxInputBehavior InputMode="DecimalInput"/>
+            </b:Interaction.Behaviors>
+        </TextBox>
+
+        <TextBlock Foreground="GhostWhite" Grid.Row="5" Grid.Column="0" Text="Base Price" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+        <CheckBox x:Name="StartPriceToggle" Grid.Row="5" Grid.Column="0" IsChecked="{Binding Path=StartPriceSwitch, Mode=TwoWay}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="8,0,0,25" Foreground="GhostWhite"/>
+        <TextBlock x:Name="StarPriceLabel" Foreground="GhostWhite" Grid.Row="5" Grid.Column="0" Text="{Binding Path=StartPrice, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+        <TextBox x:Name="StarPriceLabel1" MinWidth="50" Foreground="GhostWhite" Background="#FF323232" Visibility="{Binding IsChecked, ElementName=StartPriceToggle, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="5" Grid.Column="0" Text="{Binding Path=StartPriceC, Mode=TwoWay}" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+            <b:Interaction.Behaviors>
+                <local:TextBoxInputBehavior InputMode="DecimalInput"/>
+            </b:Interaction.Behaviors>
+        </TextBox>
+        <Button Foreground="GhostWhite" Background="Gray" Click="StarPriceBut_Click" x:Name="StarPriceBut"  Grid.Row="5" Grid.Column="0" Content=" Set " HorizontalAlignment="Left" VerticalAlignment="Bottom"  Margin="3"/>
+
+        <TextBlock x:Name="SellLimitLabel" Visibility="{Binding IsChecked, ElementName=SellToggle, Converter={StaticResource BooleanToVisibilityConverter}}" Foreground="GhostWhite" Grid.Row="2" Grid.Column="4" Text="Sell Price" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <CheckBox x:Name="SellLimitToggle" Visibility="{Binding IsChecked, ElementName=SellToggle, Converter={StaticResource BooleanToVisibilityConverter}}" IsChecked="{Binding Path=SellLimitSwitch, Mode=TwoWay}" Grid.Row="2" Grid.Column="4"  VerticalAlignment="top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="SellLimitBox" KeyDown="Box_KeyDown" Visibility="{Binding IsChecked, ElementName=SellToggle, Converter={StaticResource BooleanToVisibilityConverter}}" Background="#FF323232" Foreground="GhostWhite" Grid.Row="2" Grid.Column="4" Text="{Binding Path=SellLimitPrice, Mode=TwoWay}" VerticalAlignment="Center">
+            <b:Interaction.Behaviors>
+                <local:TextBoxInputBehavior InputMode="DecimalInput"/>
+            </b:Interaction.Behaviors>
+        </TextBox>
+        <TextBox x:Name="TargetSellProfitBox" KeyDown="Box_KeyDown" Visibility="{Binding IsChecked, ElementName=SellToggle, Converter={StaticResource BooleanToVisibilityConverter}}" Background="#FF323232" Foreground="GhostWhite" Grid.Row="2" Grid.Column="4" Text="{Binding Path=TargetSellProfit, Mode=TwoWay}" VerticalAlignment="Bottom" MaxWidth="50" HorizontalContentAlignment="Center">
+            <b:Interaction.Behaviors>
+                <local:TextBoxInputBehavior InputMode="DecimalInput"/>
+            </b:Interaction.Behaviors>
+        </TextBox>
+
+        <TextBlock x:Name="BuyLimitLabel" Visibility="{Binding IsChecked, ElementName=BuyToggle, Converter={StaticResource BooleanToVisibilityConverter}}" Foreground="GhostWhite" Grid.Row="2" Grid.Column="1"  Text="Buy Limit" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <CheckBox x:Name="BuyLimitToggle" Visibility="{Binding IsChecked, ElementName=BuyToggle, Converter={StaticResource BooleanToVisibilityConverter}}" Grid.Row="2" Grid.Column="1" IsChecked="{Binding Path=BuyLimitSwitch, Mode=TwoWay}" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="BuyLimitBox" KeyDown="Box_KeyDown" Visibility="{Binding IsChecked, ElementName=BuyToggle, Converter={StaticResource BooleanToVisibilityConverter}}" Background="#FF323232" Foreground="GhostWhite" Grid.Row="2" Grid.Column="1" Text="{Binding Path=BuyLimitPrice, Mode=TwoWay}" VerticalAlignment="Center">
+            <b:Interaction.Behaviors>
+                <local:TextBoxInputBehavior InputMode="DecimalInput"/>
+            </b:Interaction.Behaviors>
+        </TextBox>
+        <TextBox x:Name="TargetBuyProfitBox" KeyDown="Box_KeyDown" Visibility="{Binding IsChecked, ElementName=BuyToggle, Converter={StaticResource BooleanToVisibilityConverter}}" Background="#FF323232" Foreground="GhostWhite" Grid.Row="2" Grid.Column="1" Text="{Binding Path=TargetBuyProfit, Mode=TwoWay}" VerticalAlignment="Bottom" MaxWidth="50" HorizontalContentAlignment="Center">
+            <b:Interaction.Behaviors>
+                <local:TextBoxInputBehavior InputMode="DecimalInput"/>
+            </b:Interaction.Behaviors>
+        </TextBox>
+
+        <CheckBox x:Name="BuyToggle" Content="Buy" Foreground="GhostWhite" Grid.Row="0" Grid.Column="1" IsChecked="{Binding Path=AbleToBuy, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock x:Name="BuyAmountLabel" Visibility="{Binding IsChecked, ElementName=BuyToggle, Converter={StaticResource BooleanToVisibilityConverter}}" Foreground="GhostWhite" Grid.Row="1" Grid.Column="1" Text="Amount" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <TextBox x:Name="BuyAmountBox" KeyDown="Box_KeyDown" Visibility="{Binding IsChecked, ElementName=BuyToggle, Converter={StaticResource BooleanToVisibilityConverter}}" Background="#FF323232" Foreground="GhostWhite" Grid.Row="1" Grid.Column="1" Text="{Binding Path=BuyAmount, Mode=TwoWay}" VerticalAlignment="Center">
+            <b:Interaction.Behaviors>
+                <local:TextBoxInputBehavior InputMode="DecimalInput"/>
+            </b:Interaction.Behaviors>
+        </TextBox>
+
+        <CheckBox x:Name="SellToggle" Content="Sell" Foreground="GhostWhite" Grid.Row="0" Grid.Column="4" IsChecked="{Binding Path=AbleToSell, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock x:Name="SellAmountLabel" Visibility="{Binding IsChecked, ElementName=SellToggle, Converter={StaticResource BooleanToVisibilityConverter}}" Foreground="GhostWhite" Grid.Row="1" Grid.Column="4" Text="Amount" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <TextBox x:Name="SellAmountBox" KeyDown="Box_KeyDown" Visibility="{Binding IsChecked, ElementName=SellToggle, Converter={StaticResource BooleanToVisibilityConverter}}" Background="#FF323232" Foreground="GhostWhite" Grid.Row="1" Grid.Column="4" Text="{Binding Path=SellAmount, Mode=TwoWay}" VerticalAlignment="Center" >
+            <b:Interaction.Behaviors>
+                <local:TextBoxInputBehavior InputMode="DecimalInput"/>
+            </b:Interaction.Behaviors>
+        </TextBox>
+
+        <TextBlock Grid.Row="4" Grid.ColumnSpan="6" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="Green" x:Name="confirmOut"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.ColumnSpan="6" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="Red" x:Name="errorOut"></TextBlock>
+        <TextBlock Foreground="GhostWhite" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top" x:Name="otherOut"></TextBlock>
+    </Grid>
+</UserControl>

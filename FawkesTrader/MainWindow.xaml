@@ -1,0 +1,48 @@
+﻿<Window x:Class="FawkesTrader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FawkesTrader"
+        mc:Ignorable="d"
+        Title="MainWindow" MinHeight="650" MinWidth="1200">
+    <Grid Background="#262524">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.ColumnSpan="2" Background="#262524">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <TextBlock Foreground="GhostWhite" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Text="High"></TextBlock>
+            <TextBlock Foreground="GhostWhite" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Low"></TextBlock>
+            <TextBlock Foreground="GhostWhite"  Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=CurrentPair, Mode=OneWay}"></TextBlock>
+            <TextBlock Foreground="GhostWhite" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=CurrentHigh, Mode=OneWay}"></TextBlock>
+            <TextBlock Foreground="GhostWhite" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding Path=CurrentPrice, Mode=OneWay}"></TextBlock>
+            <TextBlock Foreground="GhostWhite" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=CurrentLow, Mode=OneWay}"></TextBlock>
+            <TextBlock Foreground="GhostWhite" Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Available Products"/>
+            <ComboBox  x:Name="availablePairs" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="10" SelectionChanged="ComboBox_SelectionChanged" />
+            <ComboBox  x:Name="activeBots" Grid.Row="1" Grid.Column="3" Margin="10" VerticalAlignment="Bottom" SelectionChanged="BotBox_SelectionChanged" />
+            <TextBlock Foreground="GhostWhite" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Active Products" />
+            <ListBox Background="#FF323232" Foreground="GhostWhite" x:Name="productBox" Grid.Column="1" Grid.Row="2" Margin="10"/>
+            <Button Background="#FF323232" Foreground="GhostWhite" Margin="10" x:Name="botButton" Click="botButton_Clicked" Grid.Column="2" Grid.Row="2" Content="Start Bot"/>
+            <TextBlock Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" x:Name="confirmOut"></TextBlock>
+            <TextBlock Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" x:Name="errorOut"></TextBlock>
+        </Grid>
+        <ContentControl Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="botContentArea"/>
+        <ContentControl Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="botContentArea2"/>
+    </Grid>
+</Window>

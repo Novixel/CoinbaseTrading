@@ -1,0 +1,83 @@
+﻿<Window x:Class="Alfred.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Alfred"
+        mc:Ignorable="d"
+        Title="MainWindow" MinHeight="500" Height="500" Width="800">
+    <Grid Background="#FF323232">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Foreground="GhostWhite" Grid.Column="0" Grid.Row="0" FontSize="25" Text="{Binding Path=CurrentPair, Mode=OneWay}" Margin="10"/>
+            <TextBlock Foreground="GhostWhite" Grid.Column="1" Grid.Row="0" FontSize="25" Text="{Binding Path=CurrentPrice, Mode=OneWay}" Margin="10"/>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <ListBox Style="{StaticResource lisBox}" x:Name="tradeBox" SelectionChanged="tradeBox_SelectionChanged" />
+        </Grid>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+            <ListBox Style="{StaticResource lisBox}" x:Name="listBoxPro" SelectionChanged="listBoxPro_SelectionChanged" />
+            <TextBlock  Style="{StaticResource textBox}" Text="Wallet Balance" FontWeight="Bold" />
+
+            <DockPanel>
+                <TextBlock  Style="{StaticResource textBox}" Text="{Binding Path=QuoteCurrency, Mode=OneWay}"/>
+                <TextBlock  Style="{StaticResource textBox}" Text="{Binding Path=AvailableQuote, Mode=OneWay}" TextAlignment="Right"/>
+            </DockPanel>
+
+            <DockPanel>
+                <TextBlock  Style="{StaticResource textBox}" Text="{Binding Path=BaseCurrency, Mode=OneWay}"/>
+                <TextBlock    Style="{StaticResource textBox}" Text="{Binding Path=AvailableBase, Mode=OneWay}" TextAlignment="Right"/>
+            </DockPanel>
+            <TextBlock  Style="{StaticResource textBox}" Text="Order Form!" FontWeight="Bold" />
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions> 
+                <RadioButton x:Name="btnBuy"   Style="{StaticResource togBtn}" Grid.Column="0" Content="Buy" Click="ChangeSide"/>
+                <RadioButton x:Name="btnSell"  Style="{StaticResource togBtn}" Grid.Column="1" Content="Sell" Click="ChangeSide"/>
+            </Grid>
+            
+            <DockPanel>
+                <TextBlock  Style="{StaticResource textBox}" Text="Amount:"/>
+                <TextBlock  Style="{StaticResource textBox}" Text="{Binding Path=BaseCurrency}" DockPanel.Dock="Right"/>
+                <TextBox    Style="{StaticResource inputBox}" Text="{Binding Path=TradeAmount, Mode=TwoWay}" TextAlignment="Right"/>
+            </DockPanel>
+            
+            <DockPanel>
+                <TextBlock  Style="{StaticResource textBox}" Text="Price:"/>
+                <TextBlock  Style="{StaticResource textBox}" Text="{Binding Path=QuoteCurrency}" DockPanel.Dock="Right"/>
+                <TextBox    Style="{StaticResource inputBox}" Text="{Binding Path=TradePrice, Mode=TwoWay}" TextAlignment="Right"/>
+            </DockPanel>
+            
+            <Button Style="{StaticResource btnTmp}" Content="Place Order" Click="PlaceOrderButton_Click" />
+            
+            <DockPanel>
+                <TextBlock  Style="{StaticResource textBox}" Text="Fee:"/>
+                <TextBlock    Style="{StaticResource textBox}" Text="{Binding Path=TradeFee}" TextAlignment="Right"/>
+            </DockPanel>
+
+            <DockPanel>
+                <TextBlock  Style="{StaticResource textBox}" Text="Total:"/>
+                <TextBlock    Style="{StaticResource textBox}" Text="{Binding Path=TradeTotal}" TextAlignment="Right"/>
+            </DockPanel>
+
+        </StackPanel>
+    </Grid>
+    
+</Window>
